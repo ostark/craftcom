@@ -147,7 +147,7 @@ class PluginsController extends Controller
         if ($plugin === null) {
             if ($pluginId !== null) {
                 $plugin = Plugin::find()->id($pluginId)->status(null)->one();
-                if ($plugin === false) {
+                if ($plugin === null) {
                     throw new NotFoundHttpException('Invalid plugin ID: '.$pluginId);
                 }
 
@@ -180,7 +180,7 @@ class PluginsController extends Controller
 
         if ($pluginId = $request->getBodyParam('pluginId')) {
             $plugin = Plugin::find()->id($pluginId)->status(null)->one();
-            if ($plugin === false) {
+            if ($plugin === null) {
                 throw new NotFoundHttpException('Invalid plugin ID: '.$pluginId);
             }
 
